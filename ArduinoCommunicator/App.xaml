@@ -45,7 +45,7 @@
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="{Binding Path=colButtonDisabledBackground}" />
-            <Setter Property="Foreground" Value="#FFFF00FF" />
+
 
         </Style>
     </Application.Resources>
