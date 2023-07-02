@@ -21,13 +21,30 @@ namespace ArduinoCommunicator
     /// </summary>
     public partial class Options : Window
     {
-        //Parameters parameters = new Parameters();
-        public Options()
+        public Parameters parameters;
+        public Options(ref Parameters param)
         {
             InitializeComponent();
-            //this.DataContext = parameters;
+            parameters = param;
+            this.DataContext = parameters;
+            RefreshGUIToolValues();
+        }
+
+        private void RefreshGUIToolValues()
+        {
+            // Clear all items
+            cbParity.Items.Clear();
+            cbStopBits.Items.Clear();
+            cbBaudRate.Items.Clear();
+            cbResponseEndChar.Items.Clear();
+            cbCommandEndChar.Items.Clear();
+            cbTheme.Items.Clear();
+
+            // Add available Parity and StopBits values to comboboxes
             foreach (string i in Enum.GetNames(typeof(Parity))) cbParity.Items.Add(i);
             foreach (string i in Enum.GetNames(typeof(StopBits))) cbStopBits.Items.Add(i);
+
+            // Add typical Baudrates to combobox
             cbBaudRate.Items.Add(110);
             cbBaudRate.Items.Add(300);
             cbBaudRate.Items.Add(1200);
@@ -38,22 +55,29 @@ namespace ArduinoCommunicator
             cbBaudRate.Items.Add(38400);
             cbBaudRate.Items.Add(57600);
             cbBaudRate.Items.Add(115200);
-            for(int i = 0; i < 256; i++)
+
+            // Add possible end chars to comboboxes
+            for (int i = 0; i < 256; i++)
             {
-                cbEndSignArd.Items.Add("[" + i.ToString() + "]\t" + (char)i);
-                cbEndSignCom.Items.Add("[" + i.ToString() + "]\t" + (char)i);
+                cbResponseEndChar.Items.Add("[" + i.ToString() + "]\t" + (char)i);
+                cbCommandEndChar.Items.Add("[" + i.ToString() + "]\t" + (char)i);
             }
-            for(int i = 0; i < Parameters.Themes.AllThemes.Count; i++)
+
+            // Add available themes to comboboxes
+            List<string> availableThemes = parameters.GetAvailableThemes();
+
+            for (int i = 0; i < availableThemes.Count; i++)
             {
-                cbTheme.Items.Add(Parameters.Themes.AllThemes[i].colName);
+                cbTheme.Items.Add(availableThemes[i]);
             }
 
 
+            // Set default values
             cbBaudRate.Text = Settings.Default.Baudrate.ToString();
             cbParity.SelectedIndex = Settings.Default.Parity;
             cbStopBits.SelectedIndex = Settings.Default.Stopbits;
-            cbEndSignArd.Text = "[" + Settings.Default.EndsignArd.ToString() + "]\t" + (char)(Settings.Default.EndsignArd);
-            cbEndSignCom.Text = "[" + Settings.Default.EndsignCom.ToString() + "]\t" + (char)(Settings.Default.EndsignCom);
+            cbResponseEndChar.Text = "[" + Settings.Default.EndsignArd.ToString() + "]\t" + (char)(Settings.Default.EndsignArd);
+            cbCommandEndChar.Text = "[" + Settings.Default.EndsignCom.ToString() + "]\t" + (char)(Settings.Default.EndsignCom);
             cbTheme.Text = Settings.Default.Theme;
         }
 
@@ -68,12 +92,13 @@ namespace ArduinoCommunicator
             Settings.Default.Baudrate = Int32.Parse(cbBaudRate.Text);
             Settings.Default.Parity = (byte)cbParity.SelectedIndex;
             Settings.Default.Stopbits = (byte)cbStopBits.SelectedIndex;
-            Settings.Default.EndsignArd = (byte)(cbEndSignArd.Text[cbEndSignArd.Text.Length - 1]);
-            Settings.Default.EndsignCom = (byte)(cbEndSignCom.Text[cbEndSignCom.Text.Length - 1]);
+            Settings.Default.EndsignArd = (byte)(cbResponseEndChar.Text[cbResponseEndChar.Text.Length - 1]);
+            Settings.Default.EndsignCom = (byte)(cbCommandEndChar.Text[cbCommandEndChar.Text.Length - 1]);
             Settings.Default.Theme = cbTheme.Text.Trim();
             Settings.Default.Save();
+            MessageBox.Show(Settings.Default.Stopbits.ToString() + ":\t" + ((StopBits)Settings.Default.Stopbits).ToString());
 
-            Parameters.Themes.ChangeTheme(Settings.Default.Theme);
+            parameters.ChangeTheme(Settings.Default.Theme);
 
             DialogResult = true;
             this.Close();
@@ -83,14 +108,19 @@ namespace ArduinoCommunicator
         {
             if(MessageBox.Show("Do you really want to reset all the parameters to default value?", "Arduino Communicator", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                cbBaudRate.Text = Settings.Default.defaultBaudrate.ToString();
-                cbParity.Text = Enum.GetName(typeof(Parity), Settings.Default.defaultParity);
-                cbStopBits.Text = Enum.GetName(typeof(StopBits), Settings.Default.Stopbits);
-                cbEndSignArd.Text = "[" + Settings.Default.defaultEndsignArd.ToString() + "]\t" + (char)(Settings.Default.defaultEndsignArd);
-                cbEndSignCom.Text = "[" + Settings.Default.defaultEndsignCom.ToString() + "]\t" + (char)(Settings.Default.defaultEndsignCom);
-                cbTheme.Text = Settings.Default.defaultTheme.ToString();
+                ResetToDefaultValues();
             }
 
+        }
+
+        private void ResetToDefaultValues()
+        {
+            cbBaudRate.Text = Settings.Default.default_Baudrate.ToString();
+            cbParity.Text = Enum.GetName(typeof(Parity), Settings.Default.default_Parity);
+            cbStopBits.Text = Enum.GetName(typeof(StopBits), Settings.Default.Stopbits);
+            cbResponseEndChar.Text = "[" + Settings.Default.default_EndsignArd.ToString() + "]\t" + (char)(Settings.Default.default_EndsignArd);
+            cbCommandEndChar.Text = "[" + Settings.Default.default_EndsignCom.ToString() + "]\t" + (char)(Settings.Default.default_EndsignCom);
+            cbTheme.Text = Settings.Default.default_Theme.ToString();
         }
     }
 }

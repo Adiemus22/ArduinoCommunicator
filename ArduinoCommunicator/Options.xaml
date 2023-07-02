@@ -6,10 +6,19 @@
         xmlns:local="clr-namespace:ArduinoCommunicator"
         xmlns:properties="clr-namespace:ArduinoCommunicator.Properties"
         mc:Ignorable="d"
-        Title="Parameters" Height="380" Width="280" MaxHeight="380" MaxWidth="280" MinHeight="205" MinWidth="280" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+        Title="Parameters" Height="380" Width="480" MaxHeight="380" MaxWidth="800" MinHeight="380" MinWidth="280" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" Background="{Binding Path=colBackGround2}">
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="90" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="90" />
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="90" />
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="10" />
             <ColumnDefinition Width="90" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -24,25 +33,32 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="20" />
             <RowDefinition Height="40" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="40" />
             <RowDefinition />
 
         </Grid.RowDefinitions>
 
-        <Label Name="lblBaudRate"       Grid.Column="0" Grid.Row="0" Content="Baudrate:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <ComboBox Name="cbBaudRate"     Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Margin="1" Height="22" FontSize="12"/>
-        <Label Name="lblParity"         Grid.Column="0" Grid.Row="1" Content="Parity:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <ComboBox Name="cbParity"       Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="1" Height="22" />
-        <Label Name="lblStopBits"       Grid.Column="0" Grid.Row="2" Content="Stopbits:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <ComboBox Name="cbStopBits"     Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="1" Height="22" />
-        <Label Name="lblEndSignCom"    Grid.Column="0" Grid.Row="3" Content="Com. Endsign:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <ComboBox Name="cbEndSignCom"   Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="1" Height="22" />
-        <Label Name="lblEndSignArd"     Grid.Column="0" Grid.Row="4" Content="Ard. Endsign:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <ComboBox Name="cbEndSignArd"    Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Margin="1" Height="22" />
-        <Label Name="lblTheme"          Grid.Column="0" Grid.Row="6" Content="Theme:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <ComboBox Name="cbTheme"        Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Margin="1" Height="22" FontSize="12" />
-        <Button Name="btnCancel"        Grid.Column="0" Grid.Row="8" Content="Cancel" Margin="2" Click="btnCancel_Click" FontSize="10" FontWeight="Bold" />
-        <Button Name="btnReset"         Grid.Column="1" Grid.Row="8" Content="Reset" Background="LightYellow" Margin="2" Click="btnReset_Click" FontSize="10" FontWeight="Bold" />
-        <Button Name="btnOK"            Grid.Column="2" Grid.Row="8" Content="Apply" Background="LightGreen" Margin="2" Click="btnOK_Click" FontSize="10" FontWeight="Bold" />
+        <Label Name="lblBaudRate"       Foreground="{Binding Path=colFont2}" Grid.Column="0" Grid.Row="0" Content="Baudrate:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <ComboBox Name="cbBaudRate"     Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1" Margin="1" Height="22" FontSize="12"/>
+        <Label Name="lblParity"         Foreground="{Binding Path=colFont2}" Grid.Column="0" Grid.Row="1" Content="Parity:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <ComboBox Name="cbParity"       Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="1" Margin="1" Height="22" />
+        <Label Name="lblStopBits"       Foreground="{Binding Path=colFont2}" Grid.Column="0" Grid.Row="2" Content="Stopbits:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <ComboBox Name="cbStopBits"     Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="1" Margin="1" Height="22" />
+        <Label Name="lblEndSignCom"     Foreground="{Binding Path=colFont2}" Grid.Column="4" Grid.Row="0" Content="Comp. Cmd End:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <ComboBox Name="cbCommandEndChar"   Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="1" Margin="1" Height="22" />
+        <Label Name="lblResponseEndChar"     Foreground="{Binding Path=colFont2}" Grid.Column="4" Grid.Row="1" Content="Ard. Response End:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <ComboBox Name="cbResponseEndChar"   Grid.Column="6" Grid.Row="1" Grid.ColumnSpan="1" Margin="1" Height="22" />
+        <Label Name="lblDatapointEndChar"     Foreground="{Binding Path=colFont2}" Grid.Column="4" Grid.Row="2" Content="Ard. Value End:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <ComboBox Name="cbDatapointEndChar"   Grid.Column="6" Grid.Row="2" Grid.ColumnSpan="1" Margin="1" Height="22" />
+        <Label Name="lblTheme"          Foreground="{Binding Path=colFont2}" Grid.Column="0" Grid.Row="4" Content="Theme:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <ComboBox Name="cbTheme"        Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="1" Margin="1" Height="22" FontSize="12" />
+        <Label Name="lblLogFolder"      Foreground="{Binding Path=colFont2}" Grid.Column="0" Grid.Row="6" Content="Log Folder:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBox Name="tbxLogFolder"    Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="5" Margin="1,10,1,10" Background="{Binding Path=colBackGround3}" Foreground="{Binding Path=colFont3}" TextWrapping="NoWrap"  AcceptsReturn="False" />
+        <Button Name="btnCancel"        Background="{Binding Path=colButton3}" Foreground="{Binding Path=colFont1}" Grid.Column="2" Grid.Row="8" Content="Cancel" Margin="2" Click="btnCancel_Click" FontSize="10" FontWeight="Bold" />
+        <Button Name="btnReset"         Background="{Binding Path=colButton1}" Foreground="{Binding Path=colFont1}" Grid.Column="4" Grid.Row="8" Content="Reset" Margin="7, 2, 27, 2" Click="btnReset_Click" FontSize="10" FontWeight="Bold" />
+        <Button Name="btnOK"            Background="{Binding Path=colButton2}" Foreground="{Binding Path=colFont1}" Grid.Column="6" Grid.Row="8" Content="Apply" Margin="2" Click="btnOK_Click" FontSize="10" FontWeight="Bold" />
+        
     </Grid>
 
 

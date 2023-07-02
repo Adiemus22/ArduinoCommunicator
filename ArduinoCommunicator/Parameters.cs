@@ -5,6 +5,10 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
+using System.Windows.Media;
+using System.IO;
+using ArduinoCommunicator.Properties;
 
 namespace ArduinoCommunicator
 {
@@ -16,207 +20,475 @@ namespace ArduinoCommunicator
         Rainbow
     }
 
-
-    static internal class Parameters
+    public class Parameters
     {
         #region Constructors
-        static Parameters()
+        public Parameters()
         {
-            
+            //colBackGround1 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colBackGround2 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colBackGround3 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colBackGround4 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colForeGround1 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colForeGround2 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colForeGround3 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colForeGround4 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colButton1 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colButton2 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colButton3 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colButton4 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colAccent1 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colAccent2 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colAccent3 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colAccent4 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colFont1 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colFont2 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colFont3 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colFont4 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colComboBox1 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colComboBox2 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colComboBox3 = new SolidColorBrush(new System.Windows.Media.Color());
+            //colComboBox4 = new SolidColorBrush(new System.Windows.Media.Color());
+            colBackGroundMain = new SolidColorBrush(new System.Windows.Media.Color());
+            colBackGroundSub = new SolidColorBrush(new System.Windows.Media.Color());
+            colBackGroundSubSub = new SolidColorBrush(new System.Windows.Media.Color());
+            colButtonBackground = new SolidColorBrush(new System.Windows.Media.Color());
+            colButtonForeground = new SolidColorBrush(new System.Windows.Media.Color());
+            colButtonBorder = new SolidColorBrush(new System.Windows.Media.Color());
+            colButtonDisabledBackground = new SolidColorBrush(new System.Windows.Media.Color());
+            colButtonDisabledForeground = new SolidColorBrush(new System.Windows.Media.Color());
+            colButtonDisabledBorder = new SolidColorBrush(new System.Windows.Media.Color());
+            colButtonMouseoverBackground = new SolidColorBrush(new System.Windows.Media.Color());
+            colButtonMouseoverForeground = new SolidColorBrush(new System.Windows.Media.Color());
+            colButtonMouseoverBorder = new SolidColorBrush(new System.Windows.Media.Color());
+            colButtonPressedBackground = new SolidColorBrush(new System.Windows.Media.Color());
+            colButtonPressedForeground = new SolidColorBrush(new System.Windows.Media.Color());
+            colButtonPressedBorder = new SolidColorBrush(new System.Windows.Media.Color());
+            colIconBackground = new SolidColorBrush(new System.Windows.Media.Color());
+            colIconForeground = new SolidColorBrush(new System.Windows.Media.Color());
+            colIconBorder = new SolidColorBrush(new System.Windows.Media.Color());
+            colIconDisabledBackground = new SolidColorBrush(new System.Windows.Media.Color());
+            colIconDisabledForeground = new SolidColorBrush(new System.Windows.Media.Color());
+            colIconDisabledBorder = new SolidColorBrush(new System.Windows.Media.Color());
+            colIconMouseoverBackground = new SolidColorBrush(new System.Windows.Media.Color());
+            colIconMouseoverForeground = new SolidColorBrush(new System.Windows.Media.Color());
+            colIconMouseoverBorder = new SolidColorBrush(new System.Windows.Media.Color());
+            colIconPressedBackground = new SolidColorBrush(new System.Windows.Media.Color());
+            colIconPressedForeground = new SolidColorBrush(new System.Windows.Media.Color());
+            colIconPressedBorder = new SolidColorBrush(new System.Windows.Media.Color());
+            colTextblockBackground = new SolidColorBrush(new System.Windows.Media.Color());
+            colTextblockForeground = new SolidColorBrush(new System.Windows.Media.Color());
+            colTextblockBorder = new SolidColorBrush(new System.Windows.Media.Color());
+            colLabelBackground = new SolidColorBrush(new System.Windows.Media.Color());
+            colLabelForeground = new SolidColorBrush(new System.Windows.Media.Color());
+            colLabelBorder = new SolidColorBrush(new System.Windows.Media.Color());
+
+            colThemeName = "Unloaded";
+
+            LoadSettings();
 
 
-            Themes.colThemeNames = new List<string>();
-            for(int i = 0; i < Themes.AllThemes.Count; i++)
-            {
-                Themes.colThemeNames.Add(Themes.AllThemes[i].colName);
-            }
+
         }
         #endregion
 
 
         #region Connection
-        static internal class Connection
-        {
-            static Connection()
-            {
 
-            }
+            internal int Baudrate { get; set; }
 
-            static internal int Baudrate { get; set; }
+            internal Parity Parity { get; set; }
 
-            static internal Parity Parity { get; set; }
+            internal StopBits StopBits { get; set; }
 
-            static internal StopBits StopBits { get; set; }
-
-            static internal char EndSignFromArduino { get; set; }
-            static internal char EndSignFromComputer { get; set; }
-        }
+            internal char EndSignFromArduino { get; set; }
+            internal char EndSignFromComputer { get; set; }
 
         #endregion
 
 
         #region Themes
-        static public class Themes
-        {
-            internal static List<string> colThemeNames { get; set; }
 
-            /// <summary>
-            /// Read-Only Theme Set.
-            /// </summary>
-            internal class Colours
+        public SolidColorBrush colBackGroundMain { get; private set; }
+        public SolidColorBrush colBackGroundSub { get; private set; }
+        public SolidColorBrush colBackGroundSubSub { get; private set; }
+
+
+
+        public SolidColorBrush colButtonBackground { get; private set; }
+        public SolidColorBrush colButtonForeground { get; private set; }
+        public SolidColorBrush colButtonBorder { get; private set; }
+
+        public SolidColorBrush colButtonDisabledBackground { get; private set; }
+        public SolidColorBrush colButtonDisabledForeground { get; private set; }
+        public SolidColorBrush colButtonDisabledBorder { get; private set; }
+
+        public SolidColorBrush colButtonMouseoverBackground { get; private set; }
+        public SolidColorBrush colButtonMouseoverForeground { get; private set; }
+        public SolidColorBrush colButtonMouseoverBorder { get; private set; }
+
+        public SolidColorBrush colButtonPressedBackground { get; private set; }
+        public SolidColorBrush colButtonPressedForeground { get; private set; }
+        public SolidColorBrush colButtonPressedBorder { get; private set; }
+
+
+
+        public SolidColorBrush colIconBackground { get; private set; }
+        public SolidColorBrush colIconForeground { get; private set; }
+        public SolidColorBrush colIconBorder { get; private set; }
+
+        public SolidColorBrush colIconDisabledBackground { get; private set; }
+        public SolidColorBrush colIconDisabledForeground { get; private set; }
+        public SolidColorBrush colIconDisabledBorder { get; private set; }
+
+        public SolidColorBrush colIconMouseoverBackground { get; private set; }
+        public SolidColorBrush colIconMouseoverForeground { get; private set; }
+        public SolidColorBrush colIconMouseoverBorder { get; private set; }
+
+        public SolidColorBrush colIconPressedBackground { get; private set; }
+        public SolidColorBrush colIconPressedForeground { get; private set; }
+        public SolidColorBrush colIconPressedBorder { get; private set; }
+
+
+        public SolidColorBrush colTextblockBackground { get; private set; }
+        public SolidColorBrush colTextblockForeground { get; private set; }
+        public SolidColorBrush colTextblockBorder { get; private set; }
+
+
+        public SolidColorBrush colLabelBackground { get; private set; }
+        public SolidColorBrush colLabelForeground { get; private set; }
+        public SolidColorBrush colLabelBorder { get; private set; }
+
+
+        public string colThemeName { get; private set; }
+            //public SolidColorBrush Transparent { get; private set; }
+            //public SolidColorBrush colBackGround1 { get; private set; }
+            //public SolidColorBrush colBackGround2 { get; private set; }
+            //public SolidColorBrush colBackGround3 { get; private set; }
+            //public SolidColorBrush colBackGround4 { get; private set; }
+            //public SolidColorBrush colForeGround1 { get; private set; }
+            //public SolidColorBrush colForeGround2 { get; private set; }
+            //public SolidColorBrush colForeGround3 { get; private set; }
+            //public SolidColorBrush colForeGround4 { get; private set; }
+            //public SolidColorBrush colButton1 { get; private set; }
+            //public SolidColorBrush colButton2 { get; private set; }
+            //public SolidColorBrush colButton3 { get; private set; }
+            //public SolidColorBrush colButton4 { get; private set; }
+            //public SolidColorBrush colAccent1 { get; private set; }
+            //public SolidColorBrush colAccent2 { get; private set; }
+            //public SolidColorBrush colAccent3 { get; private set; }
+            //public SolidColorBrush colAccent4 { get; private set; }
+            //public SolidColorBrush colFont1 { get; private set; }
+            //public SolidColorBrush colFont2 { get; private set; }
+            //public SolidColorBrush colFont3 { get; private set; }
+            //public SolidColorBrush colFont4 { get; private set; }
+            //public SolidColorBrush colComboBox1 { get; private set; }
+            //public SolidColorBrush colComboBox2 { get; private set; }
+            //public SolidColorBrush colComboBox3 { get; private set; }
+            //public SolidColorBrush colComboBox4 { get; private set; }
+
+
+
+        internal int ChangeTheme(string themeName)
             {
-                //Constructor
+                StreamReader reader = new StreamReader("Themes.txt");
+                bool isTheme = false;           // indicates if theme has been found
+                string[] lineParts;             // left and right part of read line (separated by '=')
+                int rturn = -1;                 // function return value
 
-                public Colours(string colName, Color colBackGround1, Color colBackGround2, Color colBackGround3, Color colForeGround1, Color colForeGround2, Color colForeGround3, Color colAccent1, Color colAccent2, Color colAccent3, Color colFont1, Color colFont2, Color colFont3)
+                // First, try to find right theme (Line: "Theme Name = Dark")
+                while (!reader.EndOfStream && !isTheme)
                 {
-                    this.colName = colName;
-                    this.colBackGround1 = colBackGround1;
-                    this.colBackGround2 = colBackGround2;
-                    this.colBackGround3 = colBackGround3;
-                    this.colForeGround1 = colForeGround1;
-                    this.colForeGround2 = colForeGround2;
-                    this.colForeGround3 = colForeGround3;
-                    this.colAccent1 = colAccent1;
-                    this.colAccent2 = colAccent2;
-                    this.colAccent3 = colAccent3;
-                    this.colFont1 = colFont1;
-                    this.colFont2 = colFont2;
-                    this.colFont3 = colFont3;
-                }
+                    lineParts = reader.ReadLine().Split('=');
+                    if (lineParts.Length < 2) { continue; }                     // This line does not contain '='
+                    if (lineParts[0].Trim().StartsWith('#')) { continue; }      // This is a commentary line if it starts with '#'
 
-
-
-                public string colName { get; }
-                public Color colBackGround1 { get; }
-                public Color colBackGround2 { get; }
-                public Color colBackGround3 { get; }
-                public Color colForeGround1 { get; }
-                public Color colForeGround2 { get; }
-                public Color colForeGround3 { get; }
-                public Color colAccent1 { get; }
-                public Color colAccent2 { get; }
-                public Color colAccent3 { get; }
-                public Color colFont1 { get; }
-                public Color colFont2 { get; }
-                public Color colFont3 { get; }
-            }
-
-            static internal Colours? currentTheme { get; private set; }
-
-            static internal readonly List<Colours> AllThemes = new()
-            {
-                // Add new themes here
-
-                new Themes.Colours(colName: "Dark",
-
-                colBackGround1: Color.FromArgb(0, 0, 0),
-                colBackGround2: Color.FromArgb(64, 64, 64),
-                colBackGround3: Color.FromArgb(128, 128, 128),
-
-                colForeGround1: Color.FromArgb(255, 0, 0),
-                colForeGround2: Color.FromArgb(160, 160, 160),
-                colForeGround3: Color.FromArgb(192, 192, 192),
-
-                colAccent1: Color.FromArgb(0, 0, 255),
-                colAccent2: Color.FromArgb(0, 255, 0),
-                colAccent3: Color.FromArgb(255, 0, 0),
-
-                colFont1: Color.FromArgb(255, 255, 255),
-                colFont2: Color.FromArgb(255, 255, 0),
-                colFont3: Color.FromArgb(0, 255, 0)
-
-            ),
-
-
-                new Themes.Colours(colName: "Light",
-
-                colBackGround1: Color.FromArgb(0, 0, 0),
-                colBackGround2: Color.FromArgb(0, 0, 0),
-                colBackGround3: Color.FromArgb(0, 0, 0),
-
-                colForeGround1: Color.FromArgb(0, 0, 0),
-                colForeGround2: Color.FromArgb(0, 0, 0),
-                colForeGround3: Color.FromArgb(0, 0, 0),
-
-                colAccent1: Color.FromArgb(0, 0, 0),
-                colAccent2: Color.FromArgb(0, 0, 0),
-                colAccent3: Color.FromArgb(0, 0, 0),
-
-                colFont1: Color.FromArgb(0, 0, 0),
-                colFont2: Color.FromArgb(0, 0, 0),
-                colFont3: Color.FromArgb(0, 0, 0)
-
-            ),
-
-
-
-                new Themes.Colours(colName: "Blue",
-
-                colBackGround1: Color.FromArgb(0, 0, 0),
-                colBackGround2: Color.FromArgb(0, 0, 0),
-                colBackGround3: Color.FromArgb(0, 0, 0),
-
-                colForeGround1: Color.FromArgb(0, 0, 0),
-                colForeGround2: Color.FromArgb(0, 0, 0),
-                colForeGround3: Color.FromArgb(0, 0, 0),
-
-                colAccent1: Color.FromArgb(0, 0, 0),
-                colAccent2: Color.FromArgb(0, 0, 0),
-                colAccent3: Color.FromArgb(0, 0, 0),
-
-                colFont1: Color.FromArgb(0, 0, 0),
-                colFont2: Color.FromArgb(0, 0, 0),
-                colFont3: Color.FromArgb(0, 0, 0)
-
-                ),
-
-
-
-                new Themes.Colours(colName: "Rainbow",
-
-                colBackGround1: Color.FromArgb(0, 0, 0),
-                colBackGround2: Color.FromArgb(0, 0, 0),
-                colBackGround3: Color.FromArgb(0, 0, 0),
-
-                colForeGround1: Color.FromArgb(0, 0, 0),
-                colForeGround2: Color.FromArgb(0, 0, 0),
-                colForeGround3: Color.FromArgb(0, 0, 0),
-
-                colAccent1: Color.FromArgb(0, 0, 0),
-                colAccent2: Color.FromArgb(0, 0, 0),
-                colAccent3: Color.FromArgb(0, 0, 0),
-
-                colFont1: Color.FromArgb(0, 0, 0),
-                colFont2: Color.FromArgb(0, 0, 0),
-                colFont3: Color.FromArgb(0, 0, 0)
-
-                )
-            };
-
-            static internal int ChangeTheme(int index)
-            {
-                if (index < 0 || index >= Themes.AllThemes.Count) return -1;
-
-                currentTheme = Themes.AllThemes[index];
-                return 0;
-            }
-
-            static internal int ChangeTheme(string themeName)
-            {
-                int rturn = -1;
-                for (int i = 0; i < Themes.AllThemes.Count; i++)
-                {
-                    if (Themes.AllThemes[i].colName == themeName.Trim())
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "themename"
+                        && lineParts[1].Replace(" ", "").Trim().ToLower() == themeName.Replace(" ", "").Trim().ToLower())   // Check if the line indicates beginning of wanted theme properties
                     {
-                        ChangeTheme(i);
-                        rturn = 0;
-                        break;
+                        rturn = 0;          // Theme successfully found
+                        isTheme = true;     // if so, indicate that theme was found
                     }
                 }
+
+                // If theme was found, check the next lines for the colour parameters
+                while (!reader.EndOfStream && isTheme)
+                {
+                    lineParts = reader.ReadLine().Split('=');
+                    if (lineParts.Length < 2) { continue; }                     // This line does not contain '='
+                    if (lineParts[0].Trim().StartsWith('#')) { continue; }      // This is a commentary line if it starts with '#'
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "themename") break;    // Next theme starting, so current one is done -> Exit while
+
+                    // Search for the color label and its assignment in the Themes.txt, and assign casted value
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbackgroundmain")
+                    {
+                        colBackGroundMain.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbackgroundsub")
+                    {
+                        colBackGroundSub.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbackgroundsubsub")
+                    {
+                        colBackGroundSubSub.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbuttonbackground")
+                    {
+                        colButtonBackground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbuttonforeground")
+                    {
+                        colButtonForeground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbuttonborder")
+                    {
+                        colButtonBorder.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbuttondisabledbackground")
+                    {
+                        colButtonDisabledBackground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbuttondisabledforeground")
+                    {
+                        colButtonDisabledForeground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbuttondisabledborder")
+                    {
+                        colButtonDisabledBorder.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbuttonmouseoverbackground")
+                    {
+                        colButtonMouseoverBackground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbuttonmouseoverforeground")
+                    {
+                        colButtonMouseoverForeground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbuttonmouseoverborder")
+                    {
+                        colButtonMouseoverBorder.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbuttonpressedbackground")
+                    {
+                        colButtonPressedBackground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbuttonpressedforeground")
+                    {
+                        colButtonPressedForeground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colbuttonpressedborder")
+                    {
+                        colButtonPressedBorder.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "coliconbackground")
+                    {
+                        colIconBackground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "coliconforeground")
+                    {
+                        colIconForeground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "coliconborder")
+                    {
+                        colIconBorder.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colicondisabledbackground")
+                    {
+                        colIconDisabledBackground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colicondisabledforeground")
+                    {
+                        colIconDisabledForeground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "colicondisabledborder")
+                    {
+                        colIconDisabledBorder.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "coliconmouseoverbackground")
+                    {
+                        colIconMouseoverBackground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "coliconmouseoverforeground")
+                    {
+                        colIconMouseoverForeground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "coliconmouseoverborder")
+                    {
+                        colIconMouseoverBorder.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "coliconpressedbackground")
+                    {
+                        colIconPressedBackground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "coliconpressedforeground")
+                    {
+                        colIconPressedForeground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "coliconpressedborder")
+                    {
+                        colIconPressedBorder.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "coltextblockbackground")
+                    {
+                        colTextblockBackground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "coltextblockforeground")
+                    {
+                        colTextblockForeground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "coltextblockborder")
+                    {
+                        colTextblockBorder.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "collabelbackground")
+                    {
+                        colLabelBackground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "collabelforeground")
+                    {
+                        colLabelForeground.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+                    if (lineParts[0].Replace(" ", "").Trim().ToLower() == "collabelborder")
+                    {
+                        colLabelBorder.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(lineParts[1].Replace(" ", "").Trim());
+                        continue;
+                    }
+
+
+
+                }
+
+            // return value;
+            reader.Close();
                 return rturn;
+
             }
-        }
+
+            internal List<string> GetAvailableThemes()
+            {
+                List<string> rturn = new();
+                string[] lineParts;             // left and right part of read line (separated by '=')
+
+                using (StreamReader reader = new StreamReader("Themes.txt"))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        lineParts = reader.ReadLine().Split('=');
+                        if (lineParts.Length < 2) { continue; }                     // This line does not contain '='
+                        if (lineParts[0].Trim().StartsWith('#')) { continue; }      // This is a commentary line if it starts with '#'
+
+                        if (lineParts[0].Replace(" ", "").Trim().ToLower() == "themename")  // if line describes theme name, add it to list
+                        {
+                            rturn.Add(lineParts[1].Trim());
+                        }
+                    }
+
+                    return rturn;       // return list
+                }
+
+
+            }
+
+
         #endregion
 
+
+        #region General Functions
+        internal int LoadSettings()
+        {
+            int rturn = 0;
+
+            Baudrate = Settings.Default.Baudrate;
+            Parity = (Parity)Settings.Default.Parity;
+            StopBits = (StopBits)Settings.Default.Stopbits;
+            EndSignFromArduino = (char)Settings.Default.EndsignArd;
+            EndSignFromComputer = (char)Settings.Default.EndsignCom;
+            ChangeTheme(Settings.Default.Theme);
+
+            return rturn;
+        }
+
+        internal int SaveSettings()
+        {
+            int rturn = 0;
+
+            Settings.Default.Baudrate = Baudrate;
+            Settings.Default.Parity = (byte)Parity;
+            Settings.Default.Stopbits = (byte)StopBits;
+            Settings.Default.EndsignArd = (byte)EndSignFromArduino;
+            Settings.Default.EndsignCom = (byte)EndSignFromComputer;
+
+            Settings.Default.Theme = colThemeName?.Trim();
+
+            return rturn;
+        }
+        #endregion
     }
+
+
 }

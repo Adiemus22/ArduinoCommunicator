@@ -98,221 +98,54 @@ namespace ArduinoCommunicator.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("9600")]
-        public int defaultBaudrate {
+        public int default_Baudrate {
             get {
-                return ((int)(this["defaultBaudrate"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        public byte defaultParity {
-            get {
-                return ((byte)(this["defaultParity"]));
+                return ((int)(this["default_Baudrate"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public byte defaultStopbits {
+        public byte default_Parity {
             get {
-                return ((byte)(this["defaultStopbits"]));
+                return ((byte)(this["default_Parity"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("95")]
-        public byte defaultEndsignCom {
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public byte default_Stopbits {
             get {
-                return ((byte)(this["defaultEndsignCom"]));
+                return ((byte)(this["default_Stopbits"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("99")]
-        public byte defaultEndsignArd {
+        [global::System.Configuration.DefaultSettingValueAttribute("35")]
+        public byte default_EndsignCom {
             get {
-                return ((byte)(this["defaultEndsignArd"]));
+                return ((byte)(this["default_EndsignCom"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("42")]
+        public byte default_EndsignArd {
+            get {
+                return ((byte)(this["default_EndsignArd"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Dark")]
-        public string defaultTheme {
+        public string default_Theme {
             get {
-                return ((string)(this["defaultTheme"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
-        public global::System.Drawing.Color colBackGround1 {
-            get {
-                return ((global::System.Drawing.Color)(this["colBackGround1"]));
-            }
-            set {
-                this["colBackGround1"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Green")]
-        public global::System.Drawing.Color colBackGround2 {
-            get {
-                return ((global::System.Drawing.Color)(this["colBackGround2"]));
-            }
-            set {
-                this["colBackGround2"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color colBackGround3 {
-            get {
-                return ((global::System.Drawing.Color)(this["colBackGround3"]));
-            }
-            set {
-                this["colBackGround3"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color colForeGround1 {
-            get {
-                return ((global::System.Drawing.Color)(this["colForeGround1"]));
-            }
-            set {
-                this["colForeGround1"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color colForeGround2 {
-            get {
-                return ((global::System.Drawing.Color)(this["colForeGround2"]));
-            }
-            set {
-                this["colForeGround2"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color colForeGround3 {
-            get {
-                return ((global::System.Drawing.Color)(this["colForeGround3"]));
-            }
-            set {
-                this["colForeGround3"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color colButton1 {
-            get {
-                return ((global::System.Drawing.Color)(this["colButton1"]));
-            }
-            set {
-                this["colButton1"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color colButton2 {
-            get {
-                return ((global::System.Drawing.Color)(this["colButton2"]));
-            }
-            set {
-                this["colButton2"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color colButton3 {
-            get {
-                return ((global::System.Drawing.Color)(this["colButton3"]));
-            }
-            set {
-                this["colButton3"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color colAccent1 {
-            get {
-                return ((global::System.Drawing.Color)(this["colAccent1"]));
-            }
-            set {
-                this["colAccent1"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color colAccent2 {
-            get {
-                return ((global::System.Drawing.Color)(this["colAccent2"]));
-            }
-            set {
-                this["colAccent2"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color colAccent3 {
-            get {
-                return ((global::System.Drawing.Color)(this["colAccent3"]));
-            }
-            set {
-                this["colAccent3"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color colFont1 {
-            get {
-                return ((global::System.Drawing.Color)(this["colFont1"]));
-            }
-            set {
-                this["colFont1"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color colFont2 {
-            get {
-                return ((global::System.Drawing.Color)(this["colFont2"]));
-            }
-            set {
-                this["colFont2"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color colFont3 {
-            get {
-                return ((global::System.Drawing.Color)(this["colFont3"]));
-            }
-            set {
-                this["colFont3"] = value;
+                return ((string)(this["default_Theme"]));
             }
         }
     }

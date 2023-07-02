@@ -20,68 +20,23 @@
     <Setting Name="Theme" Type="System.String" Scope="User">
       <Value Profile="(Default)">Dark</Value>
     </Setting>
-    <Setting Name="defaultBaudrate" Type="System.Int32" Scope="Application">
+    <Setting Name="default_Baudrate" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">9600</Value>
     </Setting>
-    <Setting Name="defaultParity" Type="System.Byte" Scope="Application">
-      <Value Profile="(Default)">2</Value>
-    </Setting>
-    <Setting Name="defaultStopbits" Type="System.Byte" Scope="Application">
+    <Setting Name="default_Parity" Type="System.Byte" Scope="Application">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="defaultEndsignCom" Type="System.Byte" Scope="Application">
-      <Value Profile="(Default)">95</Value>
+    <Setting Name="default_Stopbits" Type="System.Byte" Scope="Application">
+      <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="defaultEndsignArd" Type="System.Byte" Scope="Application">
-      <Value Profile="(Default)">99</Value>
+    <Setting Name="default_EndsignCom" Type="System.Byte" Scope="Application">
+      <Value Profile="(Default)">35</Value>
     </Setting>
-    <Setting Name="defaultTheme" Type="System.String" Scope="Application">
+    <Setting Name="default_EndsignArd" Type="System.Byte" Scope="Application">
+      <Value Profile="(Default)">42</Value>
+    </Setting>
+    <Setting Name="default_Theme" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Dark</Value>
-    </Setting>
-    <Setting Name="colBackGround1" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">Red</Value>
-    </Setting>
-    <Setting Name="colBackGround2" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">Green</Value>
-    </Setting>
-    <Setting Name="colBackGround3" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="colForeGround1" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="colForeGround2" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="colForeGround3" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="colButton1" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="colButton2" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="colButton3" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="colAccent1" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="colAccent2" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="colAccent3" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="colFont1" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="colFont2" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="colFont3" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
