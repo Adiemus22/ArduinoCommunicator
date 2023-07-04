@@ -1,0 +1,83 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush Color="#FFAAAAAA" x:Key="col_BackGroundMain" />
+    <SolidColorBrush Color="#FFCCCCCC" x:Key="col_BackGroundSub" />
+    <SolidColorBrush Color="#FF888888" x:Key="col_BackGroundSubSub" />
+    <SolidColorBrush Color="#FFFF0000" x:Key="col_ButtonBackground" />
+    <SolidColorBrush Color="#FFFFFF00" x:Key="col_ButtonForeground" />
+    <SolidColorBrush Color="#FF0044AA" x:Key="col_ButtonBorder" />
+    <SolidColorBrush Color="#FFFFFF00" x:Key="col_ButtonDisabledBackground" />
+    <SolidColorBrush Color="#FFFF0000" x:Key="col_ButtonDisabledForeground" />
+    <SolidColorBrush Color="#FF0044AA" x:Key="col_ButtonDisabledBorder" />
+    <SolidColorBrush Color="#FF0000CC" x:Key="col_ButtonMouseoverBackground" />
+    <SolidColorBrush Color="#FF00CCCC" x:Key="col_ButtonMouseoverForeground" />
+    <SolidColorBrush Color="#FF00CCCC" x:Key="col_ButtonMouseoverBorder" />
+    <SolidColorBrush Color="#00000000" x:Key="col_ButtonPressedBackground" />
+    <SolidColorBrush Color="#FF00FFFF" x:Key="col_ButtonPressedForeground" />
+    <SolidColorBrush Color="#FF00FFFF" x:Key="col_ButtonPressedBorder" />
+    <SolidColorBrush Color="#00000000" x:Key="col_IconBackground" />
+    <SolidColorBrush Color="#FF0044AA" x:Key="col_IconForeground" />
+    <SolidColorBrush Color="#FF0044AA" x:Key="col_IconBorder" />
+    <SolidColorBrush Color="#00000000" x:Key="col_IconDisabledBackground" />
+    <SolidColorBrush Color="#770044AA" x:Key="col_IconDisabledForeground" />
+    <SolidColorBrush Color="#770044AA" x:Key="col_IconDisabledBorder" />
+    <SolidColorBrush Color="#00000000" x:Key="col_IconMouseoverBackground" />
+    <SolidColorBrush Color="#FF00CCCC" x:Key="col_IconMouseoverForeground" />
+    <SolidColorBrush Color="#FF00CCCC" x:Key="col_IconMouseoverBorder" />
+    <SolidColorBrush Color="#00000000" x:Key="col_IconPressedBackground" />
+    <SolidColorBrush Color="#FF00FFFF" x:Key="col_IconPressedForeground" />
+    <SolidColorBrush Color="#FF00FFFF" x:Key="col_IconPressedBorder" />
+    <SolidColorBrush Color="#00000000" x:Key="col_TextblockBackground" />
+    <SolidColorBrush Color="#FFFF44CC" x:Key="col_TextblockForeground" />
+    <SolidColorBrush Color="#FF0044CC" x:Key="col_TextblockBorder" />
+    <SolidColorBrush Color="#FF0044AA" x:Key="col_LabelBackground" />
+    <SolidColorBrush Color="#FF0044AA" x:Key="col_LabelForeground" />
+    <SolidColorBrush Color="#FF0044AA" x:Key="col_LabelBorder" />
+
+    <Style TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate  TargetType="Button">
+                    <Border x:Name="border" CornerRadius="6" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource col_ButtonDisabledBackground}"/>
+                            <Setter Property="Foreground" Value="{StaticResource col_ButtonDisabledForeground}"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource col_ButtonDisabledBorder}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource col_ButtonBackground}" />
+                            <Setter Property="Foreground" Value="{StaticResource col_ButtonForeground}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource col_ButtonBorder}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource col_ButtonMouseoverBackground}"/>
+                            <Setter Property="Foreground" Value="{StaticResource col_ButtonMouseoverForeground}"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource col_ButtonMouseoverBorder}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource col_ButtonPressedBackground}"/>
+                            <Setter Property="Foreground" Value="{StaticResource col_ButtonPressedForeground}"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource col_ButtonPressedBorder}" />
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type Border}">
+        <Setter Property="CornerRadius" Value="2" />
+    </Style>
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{Binding Path=colButtonDisabledBackground}" />
+
+
+    </Style>
+
+</ResourceDictionary>

@@ -4,49 +4,12 @@
              xmlns:local="clr-namespace:ArduinoCommunicator"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate  TargetType="Button">
-                        <Border x:Name="border" CornerRadius="6" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Background" TargetName="border" Value="{Binding Path=colButtonDisabledBackground}"/>
-                                <Setter Property="Foreground" Value="{Binding Path=colButtonDisabledForeground}"/>
-                                <Setter Property="BorderBrush" Value="{Binding Path=colButtonDisabledBorder}" />
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="True">
-                                <Setter Property="Background" TargetName="border" Value="{Binding Path=colButtonBackground}" />
-                                <Setter Property="Foreground" Value="{Binding Path=colButtonForeground}" />
-                                <Setter Property="BorderBrush" Value="{Binding Path=colButtonBorder}" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" TargetName="border" Value="{Binding Path=colButtonMouseoverBackground}"/>
-                                <Setter Property="Foreground" Value="{Binding Path=colButtonMouseoverForeground}"/>
-                                <Setter Property="BorderBrush" Value="{Binding Path=colButtonMouseoverBorder}" />
-                            </Trigger>
-
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" TargetName="border" Value="{Binding Path=colButtonPressedBackground}"/>
-                                <Setter Property="Foreground" Value="{Binding Path=colButtonPressedForeground}"/>
-                                <Setter Property="BorderBrush" Value="{Binding Path=colButtonPressedBorder}" />
-                            </Trigger>
-
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style TargetType="{x:Type Border}">
-            <Setter Property="CornerRadius" Value="2" />
-        </Style>
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="{Binding Path=colButtonDisabledBackground}" />
-
-
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="./Themes/Dark.xaml" />
+                
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+            
     </Application.Resources>
 </Application>

@@ -51,7 +51,7 @@
         <ComboBox Style="{DynamicResource ComboBoxStyleBG}" Name="cbComPort" Grid.Column="0" Grid.Row="0" Grid.RowSpan ="2" Margin="10" Height="22"/>
         <Button Name="btnConnect" Grid.Column="0" Grid.Row="2" Margin="10" Height="22" Content="Connect" Click="btnConnect_Click" />
         <Button Name="btnSend" Grid.Column="0" Grid.Row="3" Margin="10" Height="22" Content="Send" IsEnabled="False" Click="btnSend_Click"/>
-        <Button Name="btnTest" Grid.Column="0" Grid.Row="5" Margin="10" Height="22" Content="Test"/>
+        <Button Name="btnTest" Grid.Column="0" Grid.Row="5" Margin="10" Height="22" Content="Test" Click="btnTest_Click"/>
         <Button Name="btnDisconnect" Grid.Column="0" Grid.Row="4" Margin="10" Height="22" Content="Disconnect" IsEnabled="False" Click="btnDisconnect_Click"/>
         <Button Name="btnOptions" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="22" Height="22" Margin="10"  Content="R" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" Click="btnOptions_Click" FontFamily="Wingdings" BorderThickness="0,0,0,0" ToolTip="Show Options..."/>
         <Button Name="btnShowData" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="22" Height="22" Margin="10, 10, 32, 10" Content="h" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" Click="btnOptions_Click" FontFamily="Wingdings" BorderThickness="0,0,0,0" ToolTip="Show Measurement Plot..."/>

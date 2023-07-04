@@ -485,6 +485,10 @@ namespace ArduinoCommunicator
 
         }
 
+        private void btnTest_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Resources.MergedDictionaries[0].Source = new Uri(".\\Themes\\Bright.xaml", UriKind.RelativeOrAbsolute);
+        }
     }
 }
 
