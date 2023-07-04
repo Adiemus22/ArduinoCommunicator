@@ -9,17 +9,10 @@ using System.Media;
 using System.Windows.Media;
 using System.IO;
 using ArduinoCommunicator.Properties;
+using System.Windows;
 
 namespace ArduinoCommunicator
 {
-    enum Themes
-    {
-        Dark,
-        Bright,
-        Blue,
-        Rainbow
-    }
-
     public class Parameters
     {
         #region Constructors
@@ -55,7 +48,7 @@ namespace ArduinoCommunicator
             StopBits = (StopBits)Settings.Default.Stopbits;
             EndSignFromArduino = (char)Settings.Default.EndsignArd;
             EndSignFromComputer = (char)Settings.Default.EndsignCom;
-
+            ChangeTheme(Settings.Default.Theme);
             return rturn;
         }
 
@@ -71,6 +64,32 @@ namespace ArduinoCommunicator
 
 
             return rturn;
+        }
+        #endregion
+
+
+        #region Styles
+
+        private Dictionary<string, Uri> ThemesNamesUriDict = new Dictionary<string, Uri>()
+        {
+            {"Standard", new Uri(".\\Themes\\Default.xaml", UriKind.RelativeOrAbsolute) },
+            {"Dark", new Uri(".\\Themes\\Dark.xaml", UriKind.RelativeOrAbsolute) },
+            {"Bright", new Uri(".\\Themes\\Bright.xaml", UriKind.RelativeOrAbsolute) },
+            {"Blue", new Uri(".\\Themes\\Blue.xaml", UriKind.RelativeOrAbsolute) }
+        };
+
+        public List<string> GetThemeNames()
+        {
+            return new List<string>(ThemesNamesUriDict.Keys);
+        }
+
+        public void ChangeTheme(string themeName)
+        {
+            if (!ThemesNamesUriDict.ContainsKey(themeName)) throw new ThemeNotFoundException(themeName);
+                
+            System.Windows.Application.Current.Resources.MergedDictionaries[0].Source = ThemesNamesUriDict[themeName];
+
+
         }
         #endregion
     }

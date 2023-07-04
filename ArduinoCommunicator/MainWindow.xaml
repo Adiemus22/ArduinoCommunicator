@@ -11,6 +11,7 @@
     <Window.Resources>
 
 
+
     </Window.Resources>
     
     <Grid>
@@ -34,10 +35,10 @@
 
 
 
-        <Grid Background="{Binding Path=colBackGroundMain}" Grid.RowSpan="8"></Grid>
-        <Grid Background="{Binding Path=colBackGroundSub}" Grid.Column="1" Grid.RowSpan="8" />
-        <Grid Background="{Binding Path=colBackGroundMain}" Grid.Row="8" Grid.ColumnSpan="3"></Grid>
-        <Grid Background="{Binding Path=colBackGroundMain}" Grid.Row="0" Grid.Column="2" Grid.RowSpan="8" >
+        <Grid Background="{StaticResource col_BackgroundMain}" Grid.RowSpan="8"></Grid>
+        <Grid Background="{StaticResource col_BackgroundAccent}" Grid.Column="1" Grid.RowSpan="8" />
+        <Grid Background="{StaticResource col_BackgroundSubSub}" Grid.Row="8" Grid.ColumnSpan="3"></Grid>
+        <Grid Background="{StaticResource col_BackgroundSub}" Grid.Row="0" Grid.Column="2" Grid.RowSpan="8" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
@@ -48,16 +49,16 @@
         <Label Name="lblTitle1" Grid.Column="2" Grid.Row="0" Margin="10, 0, 0, 0" Content="Type in commands here:" FontSize="12" FontWeight="Bold"/>
         <Label Name="lblTitle2" Grid.Column="2" Grid.Row="6" Margin="10, 0, 0, 0" Content="Console:" FontSize="12" FontWeight="Bold"/>
         <Label Name="lblDataReceived" Grid.Column="0" Grid.Row="6" Content="" FontSize="12" FontWeight="Bold" Visibility="Hidden"/>
-        <ComboBox Style="{DynamicResource ComboBoxStyleBG}" Name="cbComPort" Grid.Column="0" Grid.Row="0" Grid.RowSpan ="2" Margin="10" Height="22"/>
+        <ComboBox Name="cbComPort" Grid.Column="0" Grid.Row="0" Grid.RowSpan ="2" Margin="10" Height="22"/>
         <Button Name="btnConnect" Grid.Column="0" Grid.Row="2" Margin="10" Height="22" Content="Connect" Click="btnConnect_Click" />
         <Button Name="btnSend" Grid.Column="0" Grid.Row="3" Margin="10" Height="22" Content="Send" IsEnabled="False" Click="btnSend_Click"/>
         <Button Name="btnTest" Grid.Column="0" Grid.Row="5" Margin="10" Height="22" Content="Test" Click="btnTest_Click"/>
         <Button Name="btnDisconnect" Grid.Column="0" Grid.Row="4" Margin="10" Height="22" Content="Disconnect" IsEnabled="False" Click="btnDisconnect_Click"/>
-        <Button Name="btnOptions" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="22" Height="22" Margin="10"  Content="R" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" Click="btnOptions_Click" FontFamily="Wingdings" BorderThickness="0,0,0,0" ToolTip="Show Options..."/>
-        <Button Name="btnShowData" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="22" Height="22" Margin="10, 10, 32, 10" Content="h" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" Click="btnOptions_Click" FontFamily="Wingdings" BorderThickness="0,0,0,0" ToolTip="Show Measurement Plot..."/>
-        <Button Name="btnSaveCommands" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="22" Height="22" IsEnabled="{Binding ElementName=tbCommands, Path=Text.Length}" Margin="10, 10, 54, 10" Content="&lt;" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" Click="btnSaveCommands_Click" FontFamily="Wingdings" BorderThickness="0,0,0,0" ToolTip="Save Command File as..."/>
-        <Button Name="btnLoadCommands" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="22" Height="22" Margin="10, 10, 76, 10" Content="1" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" Click="btnLoadCommands_Click" FontFamily="Wingdings" BorderThickness="0,0,0,0" ToolTip="Load Command File..."/>
-        <Button Name="btnSaveLog" Grid.Column="2" Grid.Row="6" Grid.RowSpan="2" Width="22" Height="22" Margin="10, 10, 10, 10" Content="&amp;" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" Click="btnSaveLog_Click" FontFamily="Wingdings" BorderThickness="0,0,0,0" ToolTip="Save Log File..."/>
+        <Button Style="{DynamicResource IconStyle}" Name="btnOptions" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="22" Height="22" Margin="10"  Content="R" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" Click="btnOptions_Click" FontFamily="Wingdings" BorderThickness="0,0,0,0" ToolTip="Show Options..."/>
+        <Button Style="{DynamicResource IconStyle}" Name="btnShowData" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="22" Height="22" Margin="10, 10, 32, 10" Content="h" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" Click="btnOptions_Click" FontFamily="Wingdings" BorderThickness="0,0,0,0" ToolTip="Show Measurement Plot..."/>
+        <Button Style="{DynamicResource IconStyle}" Name="btnSaveCommands" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="22" Height="22" IsEnabled="{Binding ElementName=tbCommands, Path=Text.Length}" Margin="10, 10, 54, 10" Content="&lt;" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" Click="btnSaveCommands_Click" FontFamily="Wingdings" BorderThickness="0,0,0,0" ToolTip="Save Command File as..."/>
+        <Button Style="{DynamicResource IconStyle}" Name="btnLoadCommands" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Width="22" Height="22" Margin="10, 10, 76, 10" Content="1" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" Click="btnLoadCommands_Click" FontFamily="Wingdings" BorderThickness="0,0,0,0" ToolTip="Load Command File..."/>
+        <Button Style="{DynamicResource IconStyle}" Name="btnSaveLog" Grid.Column="2" Grid.Row="6" Grid.RowSpan="2" Width="22" Height="22" Margin="10, 10, 10, 10" Content="&amp;" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" Click="btnSaveLog_Click" FontFamily="Wingdings" BorderThickness="0,0,0,0" ToolTip="Save Log File..."/>
         <TextBox Name="tbCommands" Grid.Column="2" Grid.Row="1" Grid.RowSpan="5" Margin="10,10,10,10" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Padding="5,5,5,0" />
         <TextBox x:Name="tbLog" Grid.Column="2" Grid.Row="7" Margin="10,10,10,10" IsReadOnly="True" TextWrapping="WrapWithOverflow" AcceptsReturn="True" TextChanged="tbReplies_TextChanged" Padding="5,5,5,0" >
 

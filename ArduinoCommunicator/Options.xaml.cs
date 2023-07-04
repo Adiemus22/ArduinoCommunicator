@@ -26,7 +26,7 @@ namespace ArduinoCommunicator
         {
             InitializeComponent();
             parameters = param;
-            this.DataContext = parameters;
+            // this.DataContext = parameters;
             RefreshGUIToolValues();
         }
 
@@ -39,6 +39,11 @@ namespace ArduinoCommunicator
             cbResponseEndChar.Items.Clear();
             cbCommandEndChar.Items.Clear();
             cbTheme.Items.Clear();
+
+            foreach (string theme in parameters.GetThemeNames())
+            {
+                cbTheme.Items.Add(theme);
+            }
 
             // Add available Parity and StopBits values to comboboxes
             foreach (string i in Enum.GetNames(typeof(Parity))) cbParity.Items.Add(i);
@@ -63,14 +68,6 @@ namespace ArduinoCommunicator
                 cbCommandEndChar.Items.Add("[" + i.ToString() + "]\t" + (char)i);
             }
 
-            // Add available themes to comboboxes
-            List<string> availableThemes = parameters.GetAvailableThemes();
-
-            for (int i = 0; i < availableThemes.Count; i++)
-            {
-                cbTheme.Items.Add(availableThemes[i]);
-            }
-
 
             // Set default values
             cbBaudRate.Text = Settings.Default.Baudrate.ToString();
@@ -89,6 +86,16 @@ namespace ArduinoCommunicator
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                parameters.ChangeTheme(cbTheme.Text);
+            }
+            catch(Exception ex)
+            { 
+                MessageBox.Show(ex.Message, "Error loading theme", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             Settings.Default.Baudrate = Int32.Parse(cbBaudRate.Text);
             Settings.Default.Parity = (byte)cbParity.SelectedIndex;
             Settings.Default.Stopbits = (byte)cbStopBits.SelectedIndex;
@@ -96,9 +103,6 @@ namespace ArduinoCommunicator
             Settings.Default.EndsignCom = (byte)(cbCommandEndChar.Text[cbCommandEndChar.Text.Length - 1]);
             Settings.Default.Theme = cbTheme.Text.Trim();
             Settings.Default.Save();
-            MessageBox.Show(Settings.Default.Stopbits.ToString() + ":\t" + ((StopBits)Settings.Default.Stopbits).ToString());
-
-            parameters.ChangeTheme(Settings.Default.Theme);
 
             DialogResult = true;
             this.Close();

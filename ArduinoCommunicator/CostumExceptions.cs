@@ -98,4 +98,22 @@ namespace ArduinoCommunicator
         }
     }
 
+    public class ThemeNotFoundException : Exception
+    {
+        // Constructors
+        public ThemeNotFoundException(string File) : base() { _theme = File; }
+        public ThemeNotFoundException(string File, string message) : base(File) { }
+        public ThemeNotFoundException(string File, string message, Exception e) : base(File) { }
+
+        private readonly string _theme;
+        public override string Message
+        {
+            get
+            {
+                return $"The Theme \"{_theme}\" is could not be loaded. Please chose a different theme.";
+            }
+        }
+    }
+
+
 }
