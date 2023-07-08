@@ -4,15 +4,15 @@
 
 
 
-    <!-- COLOURS -->  
-    
+    <!-- COLOURS -->
+
     <!-- Background -->
     <SolidColorBrush Color="#FF444444" x:Key="col_BackgroundMain" />
     <SolidColorBrush Color="#FF444444" x:Key="col_BackgroundSub" />
     <SolidColorBrush Color="#FF444444" x:Key="col_BackgroundSubSub" />
     <SolidColorBrush Color="#FF444444" x:Key="col_BackgroundAccent" />
     <SolidColorBrush Color="#FF0044AA" x:Key="col_LabelBorder" />
-    <!-- Button -->    
+    <!-- Button -->
     <SolidColorBrush Color="#FFDDDDDD" x:Key="Button.Static.Background" />
     <SolidColorBrush Color="#FF707070" x:Key="Button.Static.Border" />
     <SolidColorBrush Color="#FFBEE6FD" x:Key="Button.MouseOver.Background" />
@@ -91,8 +91,8 @@
 
 
 
-    <!-- STYLES ------------------------------------------------------------------------------------------------->
-    
+    <!-- STYLES -->
+
     <!-- BUTTON -->
 
     <Style x:Key="FocusVisual">
@@ -149,7 +149,7 @@
     <!-- ICONS -->
 
 
-    
+
     <Style x:Key="IconStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Icon.Static.Background}"/>
