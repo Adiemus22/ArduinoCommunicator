@@ -7,7 +7,7 @@
     <!-- COLOURS -->
 
     <!-- Background -->
-    <SolidColorBrush Color="#FF444444" x:Key="col_BackgroundMain" />
+    <SolidColorBrush Color="#FFFF4444" x:Key="col_BackgroundMain" />
     <SolidColorBrush Color="#FF444444" x:Key="col_BackgroundSub" />
     <SolidColorBrush Color="#FF444444" x:Key="col_BackgroundSubSub" />
     <SolidColorBrush Color="#FF444444" x:Key="col_BackgroundAccent" />

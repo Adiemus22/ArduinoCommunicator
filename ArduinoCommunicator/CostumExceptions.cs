@@ -23,7 +23,6 @@ namespace ArduinoCommunicator
         }
     }
 
-
     public class UnequalNumberOfBracketsException : Exception
     {
         // Constructors

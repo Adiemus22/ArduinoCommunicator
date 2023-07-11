@@ -489,6 +489,13 @@ namespace ArduinoCommunicator
         {
             System.Windows.Application.Current.Resources.MergedDictionaries[0].Source = new Uri(".\\Themes\\Bright.xaml", UriKind.RelativeOrAbsolute);
         }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            cbComPort.Items.Clear();
+            foreach (string _comports in SerialPort.GetPortNames()) cbComPort.Items.Add(_comports);
+        }
+
     }
 }
 
